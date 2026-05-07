@@ -1,0 +1,726 @@
+/* --- GLOBAL VARIABLES & RESET --- */
+:root {
+  --primary: #0f172a;    /* Professional Dark Navy */
+  --accent: #f59e0b;     /* Golden Orange for Buttons */
+  --success: #059669;    /* Emerald Green for Price */
+  --bg-light: #f8fafc;   /* Soft Background */
+  --text-main: #1e293b;  /* Main Text */
+  --text-muted: #64748b; /* Muted Text */
+  --white: #ffffff;
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ✅ ROOT FIX (IMPORTANT) */
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  /* ❌ overflow-x: hidden hata diya */
+}
+
+/* ✅ BODY FIX (RIGHT WAY) */
+html, body {
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  line-height: 1.6;
+    overflow-x: hidden;
+  width: 100%;
+
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background: var(--primary);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-btn {
+  padding: 8px 16px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: var(--accent);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  height: 300px;
+  background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)),
+  url("https://images.unsplash.com/photo-1556911220-e15b29be8c8f");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+/* --- SEARCH & FILTERS --- */
+.filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 5%;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  flex-wrap: wrap;
+}
+
+.filter-container input {
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  outline: none;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.filter-container input:focus {
+  border-color: var(--accent);
+}
+
+/* --- CATEGORIES --- */
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  flex-wrap: wrap;
+}
+
+.cat {
+  background: white;
+  padding: 8px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid #e2e8f0;
+  transition: 0.3s;
+}
+
+.cat:hover, .cat.active {
+  background: var(--primary);
+  color: white;
+}
+
+/* --- PRODUCTS GRID --- */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 600px) {
+  .products {
+    grid-template-columns: 1fr;  /* 👈 ek hi card */
+  }
+}
+/* --- CARD DESIGN (Optimized) --- */
+.card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;   /* 👈 FULL IMAGE FILL */
+  display: block;
+}
+
+.card-body {
+  padding: 12px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.card-body h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--primary);
+  height: 40px; 
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.price {
+  font-size: 1.25rem;
+  color: var(--success);
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+.rating {
+  color: #fbbf24;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+/* --- BUTTONS --- */
+.btn {
+  width: auto;
+  min-width: 140px;
+  padding: 10px 20px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #1e293b;
+  transform: scale(1.05);
+}
+
+.buy-btn {
+  background: var(--accent);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* --- TOAST --- */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 50px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  z-index: 2000;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { bottom: -50px; opacity: 0; }
+  to { bottom: 30px; opacity: 1; }
+}
+
+/* --- CART PAGE --- */
+/* =========================================
+   NEW HORIZONTAL & COMPACT CART PAGE CSS
+   ========================================= */
+
+.cart-container {
+  max-width: 1200px; /* Thodi width badhayi hai professional spacing ke liye */
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* 🔥 GRID: Items (Left, 2/3) aur Summary (Right, 1/3) */
+.cart-grid {
+  display: grid;
+  grid-template-columns: 2fr 1.1fr; /* Items area zyada rahega */
+  gap: 30px;
+  align-items: start; /* Taaki summary upar hi rahe */
+}
+
+/* --- LEFT SIDE: CART ITEMS --- */
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Items ke beech compact gap */
+}
+
+/* 🔥 THE NEW HORIZONTAL CARD: 70% Image, 30% Text */
+.cart-card {
+  display: flex;
+  align-items: stretch; /* Image height puri lega */
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden; /* Rounded corners corners text par bhi lagne ke liye */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* Soft professional shadow */
+  border: 1px solid #f1f5f9;
+  height: 140px; /* Pure card ki height compact fix kar di */
+}
+
+/* 🖼️ 70% IMAGE AREA */
+.cart-img-container {
+  flex: 0 0 70%; /* Ekdum fix 70% width */
+  background: #f8fafc; /* Soft background image ke peeche */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-right: 1px solid #f1f5f9; /* Image aur text ke beech subtle line */
+}
+
+.cart-card img {
+  max-width: 100%;
+  max-height: 100%; /* Height full lega container ki */
+  object-fit: contain; /* Admin photos stretch nahi hongi, perfectly fit */
+}
+
+/* 📝 30% TEXT AREA */
+.cart-text-container {
+  flex: 0 0 30%; /* Ekdum fix 30% width */
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Content faila rahega top se bottom */
+}
+
+.cart-text-container h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  color: var(--primary);
+  /* Max 2 line handle ke liye */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cart-text-container .price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--success);
+  margin: 0;
+}
+
+/* 🔢 QUANTITY & REMOVE (Right corner bottom par sticky) */
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* Bottom par stick ho jayega */
+  padding-top: 10px;
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.qty-controls button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--primary);
+  padding: 0 5px;
+}
+
+.cart-text-container .remove-btn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* --- RIGHT SIDE: SUMMARY UPGRADE --- */
+.cart-summary {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 90px; /* Navbar ke niche stick karega scroll par */
+}
+
+.cart-summary h2 {
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Grand Total aur Continue Shopping same row mein compact */
+.grand-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Grand Total simple text, color code success vala green */
+.total-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--success);
+}
+
+/* Continue Shopping gray neutral button */
+.continue-btn {
+  background: #e2e8f0;
+  color: var(--secondary);
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.continue-btn:hover {
+  background: #cbd5e1;
+}
+
+.cart-summary input, .cart-summary textarea {
+  width: 100%;
+  box-sizing: border-box; /* Fix: padding se input bahr nahi jayega */
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+/* --- MOBILE RESPONSIVE (Strict) --- */
+@media (max-width: 900px) {
+  .cart-grid {
+    grid-template-columns: 1fr; /* Full width ho jayega mobile par */
+  }
+}
+
+
+@media (max-width: 600px) {
+  .cart-card {
+    height: auto; /* Height auto taaki content wrap ho sake mobile par vertical */
+    flex-direction: column; /* Mobile par wapas vertical ho jayega but compact */
+  }
+
+  .cart-img-container {
+    flex: 0 0 100%; /* Image full length */
+    height: 100px; /* Choti standard height image stretch se bachane ke liye */
+    border-right: none;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .cart-text-container {
+    flex: 0 0 100%; /* Text full length niche */
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .cart-actions {
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+  }
+}
+
+/* --- PRODUCT DETAIL PAGE --- */
+.detail-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  padding: 50px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.detail-img img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  border-radius: 20px;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.detail-info h2 {
+  font-size: 2.2rem;
+  margin-top: 0;
+  color: var(--primary);
+}
+
+.desc {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+
+/* =========================================
+   FOOTER & CONTACT BAR (The Professional Look)
+   ========================================= */
+
+/* --- 📞 CONTACT BAR --- */
+.contact-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111827; /* Deep Dark Navy */
+  color: #f8fafc;
+  padding: 40px 8%;
+  margin-top: 60px;
+  border-top: 4px solid var(--accent); /* Top par Orange line professional lagti hai */
+}
+
+.contact-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--white);
+}
+
+.contact-info p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #94a3b8; /* Muted text for readability */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* --- 📱 SOCIAL ICONS --- */
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  text-decoration: none;
+  font-size: 22px;
+  background: rgba(255, 255, 255, 0.05); /* Soft glass effect */
+  color: white;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icons a:hover {
+  background: var(--accent); /* Hover par Orange */
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+}
+
+/* --- 🏢 FOOTER --- */
+/* --- 🏢 PROFESSIONAL FOOTER --- */
+.footer {
+  background: #0f172a; /* Navy Blue */
+  padding: 30px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+  color: #94a3b8; /* Soft Gray */
+  letter-spacing: 0.5px;
+}
+
+.footer b {
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Elegant Divider */
+.footer-divider {
+  width: 50px;
+  height: 2px;
+  background: var(--accent); /* Orange line */
+  margin: 5px 0;
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+.developer-tag {
+  font-size: 13px !important;
+  opacity: 0.8;
+}
+
+.developer-tag span {
+  color: var(--white);
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+}
+
+.developer-tag span:hover {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}
+
+/* Mobile Fix */
+@media (max-width: 600px) {
+  .footer {
+    padding: 20px 10px;
+  }
+  .footer p {
+    font-size: 12px;
+  }
+}
+
+/* --- MOBILE RESPONSIVE (Footer) --- */
+@media (max-width: 768px) {
+  .contact-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    padding: 30px 20px;
+  }
+
+  .contact-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 28px; }
+  
+  .cart-grid, .detail-container { 
+    grid-template-columns: 1fr; 
+  }
+
+ 
+
+
+  .cart-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* --- ADMIN DASHBOARD --- */
+.admin-card {
+  border-left: 6px solid var(--accent);
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.back-btn {
+  background: #e2e8f0;
+  color: var(--primary);
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: #cbd5e1;
+}
+
+
+
+
+.logo span {
+  color: var(--white);
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+}
+
+.logo span:hover {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+}

@@ -1,0 +1,26 @@
+/* 🔥 REMOVE VITE DEFAULT BOXED LAYOUT COMPLETELY */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left; /* center hatao */
+}
+
+/* 🔥 BODY RESET (VERY IMPORTANT) */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* 👉 right side space fix */
+}
+
+/* ❌ REMOVE THIS (NOT NEEDED) */
+/*
+.logo {
+  height: 6em;
+  padding: 1.5em;
+}
+*/
+
+.read-the-docs {
+  color: #888;
+}
