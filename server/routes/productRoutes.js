@@ -6,7 +6,7 @@ const path = require("path");
 const Order = require("../models/Order");
 
 // 🔥 BASE URL (for deployment + local)
-const BASE_URL = process.env.BASE_URL || "http://localhost:5000";
+const BASE_URL = process.env.BASE_URL || "https://kitchen-store-server.onrender.com";
 
 // 🔥 MULTER STORAGE
 const storage = multer.diskStorage({
