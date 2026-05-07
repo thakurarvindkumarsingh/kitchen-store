@@ -30,7 +30,7 @@ function Checkout() {
       total
     };
 
-    await fetch("http://localhost:5000/orders/add", {
+    await fetch("https://kitchen-store-server.onrender.com/orders/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
