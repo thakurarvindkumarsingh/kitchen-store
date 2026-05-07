@@ -15,7 +15,7 @@ function ProductDetail() {
   const [hoverRating, setHoverRating] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://kitchen-store-server.onrender.com/products")
       .then(res => res.json())
       .then(data => {
         const found = data.find(p => p._id === id);
@@ -49,7 +49,7 @@ function ProductDetail() {
   // ⭐ SUBMIT RATING
   const submitRating = async (val) => {
     try {
-      const res = await fetch(`http://localhost:5000/products/rate/${id}`, {
+      const res = await fetch(`https://kitchen-store-server.onrender.com/products/rate/${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ value: val })
