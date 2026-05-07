@@ -20,7 +20,7 @@ function Home() {
 
   // 🔄 Load Products + Cart Count
   useEffect(() => {
-    fetch("https://kitchen-store-server.onrender.com/products")
+    fetch("https://kitchen-store-server.onrender.com")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
