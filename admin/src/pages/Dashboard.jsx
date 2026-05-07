@@ -28,13 +28,13 @@ function Dashboard() {
   }, []);
 
   const getProducts = async () => {
-    const res = await fetch("http://localhost:5000/products");
+    const res = await fetch("https://kitchen-store-server.onrender.com/products");
     const data = await res.json();
     setProducts(data);
   };
 
   const getOrders = async () => {
-    const res = await fetch("http://localhost:5000/orders");
+    const res = await fetch("https://kitchen-store-server.onrender.com/orders");
     const data = await res.json();
     setOrders(data);
   };
@@ -42,7 +42,7 @@ function Dashboard() {
   const deleteOrder = async (id) => {
     if (window.confirm("Han delete karo?")) {
       try {
-        const res = await fetch(`http://localhost:5000/delete/${id}`, {
+        const res = await fetch(`https://kitchen-store-server.onrender.com/delete/${id}`, {
           method: "DELETE"
         });
         const data = await res.json();
@@ -71,11 +71,11 @@ function Dashboard() {
       formData.append("images", form.images[i]);
     }
 
-    let url = "http://localhost:5000/products/add";
+    let url = "https://kitchen-store-server.onrender.com/products/add";
     let method = "POST";
 
     if (editId) {
-      url = `http://localhost:5000/products/update/${editId}`;
+      url = `https://kitchen-store-server.onrender.com/products/update/${editId}`;
       method = "PUT";
     }
 
@@ -88,7 +88,7 @@ function Dashboard() {
 
   const deleteProduct = async (id) => {
     if (window.confirm("Product delete karein?")) {
-      await fetch(`http://localhost:5000/products/delete/${id}`, { method: "DELETE" });
+      await fetch(`https://kitchen-store-server.onrender.com/products/delete/${id}`, { method: "DELETE" });
       getProducts();
     }
   };
@@ -105,7 +105,7 @@ function Dashboard() {
   };
 
   const markDelivered = async (id) => {
-    const res = await fetch(`http://localhost:5000/orders/deliver/${id}`, {
+    const res = await fetch(`https://kitchen-store-server.onrender.com/orders/deliver/${id}`, {
       method: "PUT"
     });
     const data = await res.json();
