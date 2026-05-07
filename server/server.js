@@ -30,10 +30,17 @@ const orderRoutes = require("./routes/orderRoutes");
 app.use("/orders", orderRoutes);
 
 // DB connect
-mongoose.connect("mongodb://127.0.0.1:27017/kitchenDB")
-.then(() => console.log("MongoDB Connected"))
-.catch(err => console.log(err));
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("MongoDB Connected ✅");
 
+    app.listen(process.env.PORT || 5000, () => {
+      console.log("Server running 🚀");
+    });
+  })
+  .catch((err) => {
+    console.log("DB Error ❌", err);
+  });
 
 app.get("/add-test", async (req, res) => {
   const Product = require("./models/Product");
