@@ -58,7 +58,7 @@ function Cart() {
     const orderData = { ...form, items: cart, total: total };
 
     try {
-      const res = await fetch("http://localhost:5000/orders/place", {
+      const res = await fetch("https://kitchen-store-server.onrender.com/orders/place", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderData)
